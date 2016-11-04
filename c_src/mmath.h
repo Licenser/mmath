@@ -1,4 +1,9 @@
 #if defined(__linux__)
+#  if __GLIBC__ >= 2 && __GLIBC_MINOR__ > 19
+#    define __USE_MISC
+#  else
+#    define __USE_BSD
+#  endif
 #  define __USE_BSD
 #  include <stdint.h>
 #  include <endian.h>
