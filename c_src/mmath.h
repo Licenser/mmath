@@ -4,7 +4,6 @@
 #  else
 #    define __USE_BSD
 #  endif
-#  define __USE_BSD
 #  include <stdint.h>
 #  include <endian.h>
 #  define htonll(v) htobe64(v)
