@@ -1,5 +1,9 @@
 #if defined(__linux__)
-#  define __USE_BSD
+#  if __GLIBC__ >= 2 && __GLIBC_MINOR__ > 19
+#    define __USE_MISC
+#  else
+#    define __USE_BSD
+#  endif
 #  include <stdint.h>
 #  include <endian.h>
 #  define htonll(v) htobe64(v)
