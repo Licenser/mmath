@@ -113,8 +113,8 @@ confidence(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   return r;
 }
 
-/* Given series, confidence level and default value reset everything below
-   with the given default value.
+/* Given series, confidence level and default value reset everything
+   equal to or below with the given default value.
  */
 static ERL_NIF_TERM
 replace_below_confidence(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -149,7 +149,7 @@ replace_below_confidence(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   if (! (target = (ffloat*) enif_make_new_binary(env, count * sizeof(ffloat), &r)))
     return enif_make_badarg(env); // TODO return propper error
   for (int i = 0; i < count; i++) {
-    if (vs[i].confidence >= threshold_confidence) {
+    if (vs[i].confidence > threshold_confidence) {
       target[i] = (ffloat){
         .value = vs[i].value,
         .confidence = vs[i].confidence

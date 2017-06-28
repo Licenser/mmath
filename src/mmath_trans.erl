@@ -11,6 +11,7 @@
 -export([
          derivate/1,
          confidence/1,
+         replace_below_confidence/3,
          mul/2,
          divide/2,
          add/2,
@@ -100,6 +101,17 @@ derivate(_) ->
 %%--------------------------------------------------------------------
 -spec confidence(binary()) -> binary().
 confidence(_) ->
+    erlang:nif_error(nif_library_not_loaded).
+
+%%--------------------------------------------------------------------
+%% @doc
+%% Transforms the series such that values with confidence lower
+%% than or equal to the threshold will be reset to the given default
+%% value.
+%% @end
+%%--------------------------------------------------------------------
+-spec replace_below_confidence(binary(), number(), number()) -> binary().
+replace_below_confidence(_, _Threshold, _Default) ->
     erlang:nif_error(nif_library_not_loaded).
 
 %%--------------------------------------------------------------------
