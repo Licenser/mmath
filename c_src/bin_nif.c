@@ -198,7 +198,6 @@ replicate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
   return r;
 }
 
-
 char get_type(ErlNifSInt64 ev) {
   int64_t v = ntohll(ev);
   return (uint8_t)((v & TYPE_MASK) >> 56);

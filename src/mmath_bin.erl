@@ -114,6 +114,7 @@ replicate(_Data, _Count) ->
 rdatasize() ->
     erlang:nif_error(nif_library_not_loaded).
 
+
 %%--------------------------------------------------------------------
 %% @doc
 %% Merges two metric lists, filling holes in one with the data of the

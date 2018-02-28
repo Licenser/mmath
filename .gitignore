@@ -12,3 +12,5 @@ deps
 TEST*
 .rebar
 rebar3.crashdump
+libs
+compile_commands.json

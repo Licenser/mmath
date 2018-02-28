@@ -10,7 +10,17 @@
 
 -include_lib("eqc/include/eqc.hrl").
 
--compile(export_all).
+-export([prop_empty/0,
+         prop_length/0,
+         prop_length_r/0,
+         prop_l2b_b2l/0,
+         prop_b2l/0,
+         prop_l2b/0,
+         prop_realize_derealize/0,
+         prop_realize/0,
+         prop_deserialize_v01/0,
+         prop_deserialize_v02alpha/0,
+         prop_deserialize_v02/0]).
 
 prop_empty() ->
     ?FORALL(Length, non_neg_int(),
@@ -87,7 +97,7 @@ prop_deserialize_v02alpha() ->
                 L = mmath_bin:to_list(<<2:8, Exp:8, Coef:48>>),
                 ?WHENFAIL(io:format(user, "~p =/= ~p~n",
                                     [L, L1]),
-                          L == L1)
+                          almost_equal(L,L1))
             end).
 
 %% Make sure it reads suqashed floats introduced in v0.2 proper
